@@ -11,9 +11,6 @@ def handle(action,context):
     if action == "shorten":
         res = shorten_agent.run(context)
 
-    elif action == "redirect":
-        res = redirect_agent.run(context)
-
     elif action == "analytics":
         res = analytics_agent.run(context)
 
