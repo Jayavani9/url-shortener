@@ -53,4 +53,4 @@ def server_error(e):
 
 if __name__ == "__main__":
     log.info("Server starting on port %s", PORT)
-    app.run(port=PORT, threaded=True)
+    app.run(host="0.0.0.0", port=PORT, threaded=True)
