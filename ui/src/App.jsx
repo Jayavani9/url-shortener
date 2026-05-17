@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const BASE = "http://localhost:8000";
+const BASE = "https://url-shortener-ji1p.onrender.com";
 
 export default function UrlShortenerUI() {
   const [url, setUrl]           = useState("");
