@@ -27,6 +27,13 @@ def shorten_url():
     log.info("Shorten request for %s", context["url"])
     return orchestrator.handle("shorten", context)
 
+# ✅ /urls must come BEFORE /<string:code>
+@app.get("/urls")
+def analytics():
+    context = {}
+    log.info("Analytics request")
+    return orchestrator.handle("analytics", context)
+
 @app.get("/<string:code>")
 def redirect_url(code):
     context = {"code": code}
@@ -35,12 +42,6 @@ def redirect_url(code):
     if result[1] == 200:
         return redirect(result[0].get_json()["original"], 302)
     return result
-
-@app.get("/urls")
-def analytics():
-    context = {}
-    log.info("Analytics request")
-    return orchestrator.handle("analytics", context)
 
 @app.errorhandler(404)
 def not_found(e):
